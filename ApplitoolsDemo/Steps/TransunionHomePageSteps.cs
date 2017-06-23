@@ -30,35 +30,33 @@ namespace ApplitoolsDemo.Steps
 
         }
 
-        [When(@"the Base Home Page Image is Compared to the Current Home Page Image")]
-        public void WhenTheBaseHomePageImageIsComparedToTheCurrentHomePageImage(string browserSize)
-        {
-            
 
+        [Then(@"the Home Page Images should match the proper (.*)")]
+        public void ThenTheHomePageImagesShouldMatchTheProperFull(string browserSize)
+        {
             try
             {
                 // Start the test and set the browser's viewport size to 800x600.
-                eyes.Open(driver, "Transunion Website", "Transunion Home Page " + browserSize + " " + 
+                eyes.Open(driver, "Transunion Website", "Transunion Home Page " + browserSize + " " +
                     ConfigurationManager.AppSettings["Browser"].ToString(), Helpers.GetBrowserSize(browserSize, driver));
 
                 // Visual checkpoint #1.
                 eyes.CheckWindow("TU Home Page");
 
-                // Click the "Get your credit" button.
-                driver.FindElement(By.XPath("//a[contains(text(),'Get your credit')]")).Click();
+                // Click the "My Credit Score & Report" button.
+                driver.FindElement(By.XPath("//span[contains(text(),'My Credit Score & Report')]")).Click();
 
                 // Visual checkpoint #2.
-                eyes.CheckWindow("Get My Credit Score");
-                
+                eyes.CheckWindow("My Credit Score & Report");
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-            
+
 
         }
-
 
 
     }
