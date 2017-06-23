@@ -1,4 +1,5 @@
-﻿using Applitools.Selenium;
+﻿using Applitools;
+using Applitools.Selenium;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -31,18 +32,29 @@ namespace ApplitoolsDemo
             eyes.ApiKey = "IsXN5ETWMiL1bMaRaQY0DIJrvH3KS7w2z1007WdL3kaA0110";
             eyes.WaitBeforeScreenshots = 2000;
 
+            //Set Batch ID
+            BatchInfo batch = new BatchInfo("APPLITOOLS_BATCH_ID");
+            eyes.Batch = batch;
+
             ScenarioContext.Current.Set<Eyes>(eyes, "Eyes");
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
+
             //Close Applitools Eyes.
-            ScenarioContext.Current.Get<Eyes>("Eyes").Close();
+            ScenarioContext.Current.Get<Eyes>("Eyes")
+                .Close();
         
             //Quit Selenium WebDriver
 
-            ScenarioContext.Current.Get<IWebDriver>("WebDriver").Quit();
+            ScenarioContext.Current.Get<IWebDriver>("WebDriver")
+                .Quit();
+
+            //Abort if not closed Applitools Eyes.
+            ScenarioContext.Current.Get<Eyes>("Eyes")
+                .AbortIfNotClosed();
         }
 
         public IWebDriver GetWebDriver(string browser)
