@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
@@ -23,31 +24,25 @@ namespace ApplitoolsDemo.Steps
             
         }
 
-        [Given(@"the Transunion Home Page is a certain (.*)")]
-        public void GivenTheTransunionHomePageIsACertainFull(string browserSize)
+        [Given(@"the Transunion Home Page is displayed in a certain (.*)")]
+        public void GivenTheTransunionHomePageIsDisplayedInACertainFull(string browserSize)
         {
-            Helpers.GetBrowserSize(browserSize, driver);
-
+            ScenarioContext.Current.Set<string>(browserSize, "BrowserSize");
+            ScenarioContext.Current.Set<Size>(Helpers.GetBrowserSize(browserSize, driver), "Size");
         }
 
-
-        [Then(@"the Home Page Images should match the proper (.*)")]
-        public void ThenTheHomePageImagesShouldMatchTheProperFull(string browserSize)
+        [When(@"the Base Home Page Image is Compared to the Current Home Page Image")]
+        public void WhenTheBaseHomePageImageIsComparedToTheCurrentHomePageImage()
         {
             try
             {
-                // Start the test and set the browser's viewport size to 800x600.
-                eyes.Open(driver, "Transunion Website", "Transunion Home Page " + browserSize + " " +
-                    ConfigurationManager.AppSettings["Browser"].ToString(), Helpers.GetBrowserSize(browserSize, driver));
+                // Start the test 
+                eyes.Open(driver, "Transunion Website", "Transunion Home Page " + 
+                    ScenarioContext.Current.Get<string>("BrowserSize") + " " +
+                    ConfigurationManager.AppSettings["Browser"].ToString());
 
                 // Visual checkpoint #1.
-                eyes.CheckWindow("TU Home Page");
-
-                // Click the "My Credit Score & Report" button.
-                driver.FindElement(By.XPath("//span[contains(text(),'My Credit Score & Report')]")).Click();
-
-                // Visual checkpoint #2.
-                eyes.CheckWindow("My Credit Score & Report");
+                eyes.CheckWindow("TU Home Page");            
 
             }
             catch (Exception ex)
@@ -55,9 +50,19 @@ namespace ApplitoolsDemo.Steps
                 Console.WriteLine(ex);
             }
 
-
         }
 
+
+        [Then(@"the Home Page images should match correctly")]
+        public void ThenTheHomePageImagesShouldMatchCorrectly()
+        {
+        }
+
+        //// Click the "My Credit Score & Report" button.
+        //driver.FindElement(By.XPath("//span[contains(text(),'My Credit Score & Report')]")).Click();
+
+        //// Visual checkpoint #2.
+        //eyes.CheckWindow("My Credit Score & Report");
 
     }
 }

@@ -19,7 +19,6 @@ namespace ApplitoolsDemo
     [Binding]
     public sealed class Hooks
     {
-        // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
 
         [BeforeScenario]
@@ -30,6 +29,7 @@ namespace ApplitoolsDemo
             // Initialize the eyes SDK and set your private API key.
             Eyes eyes = new Eyes();
             eyes.ApiKey = "IsXN5ETWMiL1bMaRaQY0DIJrvH3KS7w2z1007WdL3kaA0110";
+            eyes.WaitBeforeScreenshots = 2000;
 
             ScenarioContext.Current.Set<Eyes>(eyes, "Eyes");
         }
@@ -81,6 +81,7 @@ namespace ApplitoolsDemo
                     Console.WriteLine("No Driver");
                     break;
             }
+
             return driver;
         }
 

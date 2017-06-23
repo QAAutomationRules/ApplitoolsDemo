@@ -15,25 +15,26 @@ namespace ApplitoolsDemo
         {
             Size size;
 
-            switch (browserSize)
+            switch (browserSize.ToLower())
             {
-                case "Full":
+                case "full":
                     driver.Manage().Window.Maximize();
                     size = driver.Manage().Window.Size;
-                    return size;
-                case "Half":
+                    break;
+                case "half":
                     driver.Manage().Window.Size = new Size(985, 1061);
                     size = driver.Manage().Window.Size;
-                    return size;
-                case "Mobile":
+                    break;
+                case "mobile":
                     driver.Manage().Window.Size = new Size(414, 736);
                     size = driver.Manage().Window.Size;
-                    return size;
+                    break;
                 default:
                     Console.WriteLine("None of the browser sizes were provided.");
                     size = driver.Manage().Window.Size;
-                    return size;
+                    break;
             }
+            return size;
         }
     }
 }

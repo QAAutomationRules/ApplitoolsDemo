@@ -104,7 +104,6 @@
     <Compile Include="Helpers.cs" />
     <Compile Include="Hooks\Hooks.cs" />
     <Compile Include="Steps\TransunionHomePageSteps.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
