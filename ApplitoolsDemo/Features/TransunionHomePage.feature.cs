@@ -87,7 +87,7 @@ this.FeatureBackground();
 #line 12
  testRunner.Given(string.Format("the Transunion Home Page is displayed in a certain {0}", browserSize), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 13
- testRunner.When("the Base Home Page Image is Compared to the Current Home Page Image", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("the Base Home Page Image is Compared to the Current Home Page Image by {0}", browserSize), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
  testRunner.Then("the Home Page images should match correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

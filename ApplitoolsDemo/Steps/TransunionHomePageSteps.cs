@@ -31,25 +31,23 @@ namespace ApplitoolsDemo.Steps
             ScenarioContext.Current.Set<Size>(Helpers.GetBrowserSize(browserSize, driver), "Size");
         }
 
-        [When(@"the Base Home Page Image is Compared to the Current Home Page Image")]
-        public void WhenTheBaseHomePageImageIsComparedToTheCurrentHomePageImage()
+        [When(@"the Base Home Page Image is Compared to the Current Home Page Image by (.*)")]
+        public void WhenTheBaseHomePageImageIsComparedToTheCurrentHomePageImageByFull(string browserSize)
         {
             try
             {
                 // Start the test 
-                eyes.Open(driver, "Transunion Website", "Transunion Home Page " + 
-                    ScenarioContext.Current.Get<string>("BrowserSize") + " " +
-                    ConfigurationManager.AppSettings["Browser"].ToString());
+                eyes.Open(driver, "Transunion Website", "Transunion Home Page", 
+                    ScenarioContext.Current.Get<Size>("Size"));
 
                 // Visual checkpoint #1.
-                eyes.CheckWindow("TU Home Page");            
+                eyes.CheckWindow("TU Home Page");
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-
         }
 
 

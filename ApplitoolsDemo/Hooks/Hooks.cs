@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.PhantomJS;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -31,10 +32,20 @@ namespace ApplitoolsDemo
             Eyes eyes = new Eyes();
             eyes.ApiKey = "IsXN5ETWMiL1bMaRaQY0DIJrvH3KS7w2z1007WdL3kaA0110";
             eyes.WaitBeforeScreenshots = 2000;
+            eyes.ForceFullPageScreenshot = true;
+            eyes.HideScrollbars = true;
 
             //Set Batch ID
-            BatchInfo batch = new BatchInfo("APPLITOOLS_BATCH_ID");
+            BatchInfo batch = new BatchInfo("Transunion.Com");
+            string batchId = Environment.GetEnvironmentVariable("APPLITOOLS_BATCH_ID");
+
+            if (batchId != null)
+            {
+                batch.Id = Environment.GetEnvironmentVariable("APPLITOOLS_BATCH_ID");
+            }
+
             eyes.Batch = batch;
+            
 
             ScenarioContext.Current.Set<Eyes>(eyes, "Eyes");
         }
@@ -65,13 +76,14 @@ namespace ApplitoolsDemo
             switch (browser.ToLower())
             {
                 case "firefox":
-
+                    
                     FirefoxOptions ffoptions = new FirefoxOptions();
                     var portNumber = new Random();
                     ffoptions.Profile = new FirefoxProfile();
                     ffoptions.Profile.Clean();
                     ffoptions.Profile.Port = portNumber.Next(7000, 8000);
                     ffoptions.BrowserExecutableLocation = Path.Combine(Hooks.GetBasePath, @"Drivers");
+                    ffoptions.AddAdditionalCapability("marionette", true);
 
                     driver = new FirefoxDriver(ffoptions);
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
