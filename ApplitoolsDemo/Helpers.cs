@@ -25,9 +25,9 @@ namespace ApplitoolsDemo
                     //driver.Manage().Window.Size = 
                     size = new Size(900, 600);
                     break;
-                case "mobile":
+                case "mobile chrome pixel phone":
                     //driver.Manage().Window.Size = new Size(414, 736);
-                    size = new Size(414, 660);
+                    size = new Size(412, 604);
                     break;
                 default:
                     Console.WriteLine("None of the browser sizes were provided.");

@@ -1,6 +1,7 @@
 ﻿using Applitools;
 using Applitools.Selenium;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -15,6 +16,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium.Appium.Android;
 
 namespace ApplitoolsDemo
 {
@@ -46,7 +48,6 @@ namespace ApplitoolsDemo
 
             eyes.Batch = batch;
             
-
             ScenarioContext.Current.Set<Eyes>(eyes, "Eyes");
         }
 
@@ -59,7 +60,6 @@ namespace ApplitoolsDemo
                 .Close();
         
             //Quit Selenium WebDriver
-
             ScenarioContext.Current.Get<IWebDriver>("WebDriver")
                 .Quit();
 
@@ -88,6 +88,7 @@ namespace ApplitoolsDemo
                     driver = new FirefoxDriver(ffoptions);
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     break;
+
                 case "ie":
                     var ieOptions = new InternetExplorerOptions
                     {
@@ -97,15 +98,44 @@ namespace ApplitoolsDemo
                     driver = new InternetExplorerDriver(Path.Combine(Hooks.GetBasePath, @"Drivers"), ieOptions);
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     break;
+
+                case "edge":
+
+                    EdgeOptions eoptions = new EdgeOptions();
+                    eoptions.PageLoadStrategy = EdgePageLoadStrategy.Normal;
+
+                    driver = new EdgeDriver(Path.Combine(Hooks.GetBasePath, @"Drivers"), eoptions);
+                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                    break;
+
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
                     driver = new ChromeDriver(Path.Combine(Hooks.GetBasePath, @"Drivers"));
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     break;
+
                 case "phantomjs":
                     driver = new PhantomJSDriver(Path.Combine(Hooks.GetBasePath, @"Drivers"));
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     break;
+
+                case "android":
+
+                    Console.WriteLine("Connecting to Appium server");
+
+                    DesiredCapabilities androidcapabilities = new DesiredCapabilities();
+                    androidcapabilities.SetCapability("chromedriverExecutable", Path.Combine(GetBasePath, @"AppiumDrivers\chromedriver.exe"));
+                    //androidcapabilities.SetCapability(CapabilityType.BrowserName, "Browser");
+                    androidcapabilities.SetCapability(CapabilityType.BrowserName, "Chrome");
+                    androidcapabilities.SetCapability(CapabilityType.Platform, "Android");
+                    androidcapabilities.SetCapability(CapabilityType.Version, "7.0");
+                    androidcapabilities.SetCapability("Device", "Android");
+                    androidcapabilities.SetCapability("deviceName", "Android Emulator");
+
+                    driver = new AndroidDriver<IWebElement>(new Uri("http://127.0.0.1:4723/wd/hub"), androidcapabilities);
+                    wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
+                    break;
+
                 default:
                     Console.WriteLine("No Driver");
                     break;

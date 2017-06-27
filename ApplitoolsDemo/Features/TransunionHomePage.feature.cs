@@ -17,8 +17,8 @@ namespace ApplitoolsDemo.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("Transunion Home Page", Description="\tIn order to learn my Credit score information\r\n\tAs a Transunion Customer\r\n\tI wan" +
-        "t to view the Transunion Home Page", SourceFile="Features\\TransunionHomePage.feature", SourceLine=0)]
+    [TechTalk.SpecRun.FeatureAttribute("Transunion Home Page", Description="\tAs a Transunion Customer\r\n\tI want the Transunion Home Page to be Responsive \r\n\ts" +
+        "o I can us the Website on Mobile and Desktop", SourceFile="Features\\TransunionHomePage.feature", SourceLine=0)]
     public partial class TransunionHomePageFeature
     {
         
@@ -31,8 +31,8 @@ namespace ApplitoolsDemo.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Transunion Home Page", "\tIn order to learn my Credit score information\r\n\tAs a Transunion Customer\r\n\tI wan" +
-                    "t to view the Transunion Home Page", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Transunion Home Page", "\tAs a Transunion Customer\r\n\tI want the Transunion Home Page to be Responsive \r\n\ts" +
+                    "o I can us the Website on Mobile and Desktop", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -71,7 +71,7 @@ namespace ApplitoolsDemo.Features
 #line hidden
         }
         
-        public virtual void ViewHomePageAsFullPage(string browserSize, string[] exampleTags)
+        public virtual void ViewTheHomePageAsAResponsiveWebsite(string browserSize, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "Smoke"};
@@ -79,7 +79,7 @@ namespace ApplitoolsDemo.Features
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View Home Page as Full Page", @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View the Home Page as a Responsive website", @__tags);
 #line 11
 this.ScenarioSetup(scenarioInfo);
 #line 7
@@ -94,27 +94,50 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("View Home Page as Full Page, Full", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("View the Home Page as a Responsive website, Full", new string[] {
                 "Smoke"}, SourceLine=18)]
-        public virtual void ViewHomePageAsFullPage_Full()
+        public virtual void ViewTheHomePageAsAResponsiveWebsite_Full()
         {
-            this.ViewHomePageAsFullPage("Full", ((string[])(null)));
+            this.ViewTheHomePageAsAResponsiveWebsite("Full", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("View Home Page as Full Page, Half", new string[] {
+        [TechTalk.SpecRun.ScenarioAttribute("View the Home Page as a Responsive website, Half", new string[] {
                 "Smoke"}, SourceLine=18)]
-        public virtual void ViewHomePageAsFullPage_Half()
+        public virtual void ViewTheHomePageAsAResponsiveWebsite_Half()
         {
-            this.ViewHomePageAsFullPage("Half", ((string[])(null)));
+            this.ViewTheHomePageAsAResponsiveWebsite("Half", ((string[])(null)));
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("View Home Page as Full Page, Mobile", new string[] {
-                "Smoke"}, SourceLine=18)]
-        public virtual void ViewHomePageAsFullPage_Mobile()
+        public virtual void ViewTheHomePageInTheMobileBrowser(string mobileBrowser, string[] exampleTags)
         {
-            this.ViewHomePageAsFullPage("Mobile", ((string[])(null)));
+            string[] @__tags = new string[] {
+                    "Smoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("View the Home Page in the Mobile Browser", @__tags);
+#line 24
+this.ScenarioSetup(scenarioInfo);
+#line 7
+this.FeatureBackground();
+#line 25
+ testRunner.Given(string.Format("the Transunion Home Page is displayed correctly on mobile browsers {0}", mobileBrowser), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 26
+ testRunner.When("the Base Mobile Home Page Image is Compared to the Current Home Page Image", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 27
+ testRunner.Then("the Home Page images should match correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("View the Home Page in the Mobile Browser, Mobile Chrome Pixel Phone", new string[] {
+                "Smoke"}, SourceLine=31)]
+        public virtual void ViewTheHomePageInTheMobileBrowser_MobileChromePixelPhone()
+        {
+            this.ViewTheHomePageInTheMobileBrowser("Mobile Chrome Pixel Phone", ((string[])(null)));
 #line hidden
         }
         
