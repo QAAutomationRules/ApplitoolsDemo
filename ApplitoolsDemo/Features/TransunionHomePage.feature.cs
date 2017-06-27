@@ -74,7 +74,7 @@ namespace ApplitoolsDemo.Features
         public virtual void ViewTheHomePageAsAResponsiveWebsite(string browserSize, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Smoke"};
+                    "SmokeDesktop"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -95,7 +95,7 @@ this.FeatureBackground();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("View the Home Page as a Responsive website, Full", new string[] {
-                "Smoke"}, SourceLine=18)]
+                "SmokeDesktop"}, SourceLine=18)]
         public virtual void ViewTheHomePageAsAResponsiveWebsite_Full()
         {
             this.ViewTheHomePageAsAResponsiveWebsite("Full", ((string[])(null)));
@@ -103,7 +103,7 @@ this.FeatureBackground();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("View the Home Page as a Responsive website, Half", new string[] {
-                "Smoke"}, SourceLine=18)]
+                "SmokeDesktop"}, SourceLine=18)]
         public virtual void ViewTheHomePageAsAResponsiveWebsite_Half()
         {
             this.ViewTheHomePageAsAResponsiveWebsite("Half", ((string[])(null)));
@@ -113,7 +113,7 @@ this.FeatureBackground();
         public virtual void ViewTheHomePageInTheMobileBrowser(string mobileBrowser, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Smoke"};
+                    "SmokeMobile"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -134,7 +134,7 @@ this.FeatureBackground();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("View the Home Page in the Mobile Browser, Mobile Chrome Pixel Phone", new string[] {
-                "Smoke"}, SourceLine=31)]
+                "SmokeMobile"}, SourceLine=31)]
         public virtual void ViewTheHomePageInTheMobileBrowser_MobileChromePixelPhone()
         {
             this.ViewTheHomePageInTheMobileBrowser("Mobile Chrome Pixel Phone", ((string[])(null)));

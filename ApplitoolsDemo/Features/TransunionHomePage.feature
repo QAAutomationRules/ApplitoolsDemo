@@ -7,7 +7,7 @@
 Background: Navigate to the Transunion.com Home Page
 	Given I navigate to the "http://www.Transunion.com" Home Page
 
-@Smoke
+@SmokeDesktop
 Scenario Outline: View the Home Page as a Responsive website
 	Given the Transunion Home Page is displayed in a certain <Browser Size> 
 	When the Base Home Page Image is Compared to the Current Home Page Image
@@ -20,7 +20,7 @@ Examples:
 | Half         |
 
 
-@Smoke
+@SmokeMobile
 Scenario Outline: View the Home Page in the Mobile Browser
 	Given the Transunion Home Page is displayed correctly on mobile browsers <Mobile Browser>
 	When the Base Mobile Home Page Image is Compared to the Current Home Page Image
