@@ -83,9 +83,8 @@ namespace ApplitoolsDemo
                     ffoptions.Profile.Clean();
                     ffoptions.Profile.Port = portNumber.Next(7000, 8000);
                     ffoptions.BrowserExecutableLocation = Path.Combine(Hooks.GetBasePath, @"Drivers");
-                    ffoptions.AddAdditionalCapability("marionette", true);
-
-                    driver = new FirefoxDriver(ffoptions);
+                   
+                    driver = new FirefoxDriver();
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     break;
 
