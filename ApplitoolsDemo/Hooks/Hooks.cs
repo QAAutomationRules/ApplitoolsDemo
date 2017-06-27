@@ -34,7 +34,7 @@ namespace ApplitoolsDemo
             eyes.WaitBeforeScreenshots = 2000;
             eyes.ForceFullPageScreenshot = true;
             eyes.HideScrollbars = true;
-
+                       
             //Set Batch ID
             BatchInfo batch = new BatchInfo("Transunion.Com");
             string batchId = Environment.GetEnvironmentVariable("APPLITOOLS_BATCH_ID");
@@ -89,7 +89,12 @@ namespace ApplitoolsDemo
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     break;
                 case "ie":
-                    driver = new InternetExplorerDriver(Path.Combine(Hooks.GetBasePath, @"Drivers"));
+                    var ieOptions = new InternetExplorerOptions
+                    {
+                        IntroduceInstabilityByIgnoringProtectedModeSettings = true
+                    };
+
+                    driver = new InternetExplorerDriver(Path.Combine(Hooks.GetBasePath, @"Drivers"), ieOptions);
                     wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                     break;
                 case "chrome":

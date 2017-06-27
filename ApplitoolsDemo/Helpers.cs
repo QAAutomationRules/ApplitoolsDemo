@@ -23,11 +23,11 @@ namespace ApplitoolsDemo
                     break;
                 case "half":
                     //driver.Manage().Window.Size = 
-                    size = new Size(334, 538);
+                    size = new Size(900, 600);
                     break;
                 case "mobile":
                     //driver.Manage().Window.Size = new Size(414, 736);
-                    size = new Size(600, 550);
+                    size = new Size(414, 660);
                     break;
                 default:
                     Console.WriteLine("None of the browser sizes were provided.");

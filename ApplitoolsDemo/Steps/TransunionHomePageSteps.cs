@@ -21,6 +21,7 @@ namespace ApplitoolsDemo.Steps
         public void GivenINavigateToTheHomePage(string url)
         {
             driver.Navigate().GoToUrl(url);
+            driver.FindElement(By.XPath("//div[contains(text(),'Contact Us')]"));
             
         }
 
@@ -31,14 +32,16 @@ namespace ApplitoolsDemo.Steps
             ScenarioContext.Current.Set<Size>(Helpers.GetBrowserSize(browserSize, driver), "Size");
         }
 
-        [When(@"the Base Home Page Image is Compared to the Current Home Page Image by (.*)")]
-        public void WhenTheBaseHomePageImageIsComparedToTheCurrentHomePageImageByFull(string browserSize)
+        [When(@"the Base Home Page Image is Compared to the Current Home Page Image")]
+        public void WhenTheBaseHomePageImageIsComparedToTheCurrentHomePageImage()
         {
             try
             {
                 // Start the test 
-                eyes.Open(driver, "Transunion Website", "Transunion Home Page", 
+                eyes.Open(driver, "Transunion Website", "Transunion Home Page",
                     ScenarioContext.Current.Get<Size>("Size"));
+
+                driver.FindElement(By.XPath("//div[contains(text(),'Contact Us')]"));
 
                 // Visual checkpoint #1.
                 eyes.CheckWindow("TU Home Page");
